@@ -1,14 +1,53 @@
-import NavigationBar from "@/components/NavBar";
+"use client";
+
+import ParticlesBackground from "@/components/ParticlesBackground";
+import { useEffect, useState } from "react";
+
+const quotes = [
+  "The only real mistake is the one from which we learn nothing.",
+  "Mistakes are the portals of discovery.",
+  "Our greatest glory is not in never failing, but in rising up every time we fail.",
+  "The best way to not make mistakes is to not make decisions.",
+  "A life spent making mistakes is not only more honorable, but more useful than a life spent doing nothing.",
+  "It is wise to profit by the mistakes of others.",
+  "We make mistakes, but in the grand scheme of things, these mistakes can lead to something beautiful.",
+  "Don't be afraid to fail. Be afraid not to try.",
+  "Every mistake you make is progress.",
+  "The art of living lies less in eliminating our troubles than in growing with them.",
+];
 
 export default function Home() {
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTransitioning(true); // Start fade out
+
+      setTimeout(() => {
+        setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
+        setTransitioning(false); // End fade in (opacity will go back to 1)
+      }, 500); // Duration should match the CSS transition
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="flex flex-col">
-      <NavigationBar />
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-200 text-gray-600">
-        <h1 className="text-3xl font-bold">Coming Soon... ⚙️</h1>
-        <p className="mt-4 text-lg">
-          A Smart man learns from his mistakes, but a wise man learns from the
-          mistakes of others.
+    <div className="relative flex flex-col h-screen overflow-hidden">
+      <div className="absolute inset-0 z-[-1]">
+        <ParticlesBackground />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-gray-300">
+        <h1 className="text-6xl font-bold">Mistakes</h1>
+        <h2 className="mt-10 text-xl"> Coming Soon...</h2>
+        <p
+          className={`mt-30 text-xl transition-opacity duration-500 ${
+            transitioning ? "opacity-0" : "opacity-100"
+          }`}
+        >
+          {quotes[currentQuoteIndex]}
         </p>
       </div>
     </div>
