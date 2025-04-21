@@ -2,6 +2,7 @@
 
 import ParticlesBackground from "@/components/ParticlesBackground";
 import { useEffect, useState } from "react";
+import IntakeForm from "@/components/IntakeForm";
 
 const quotes = [
   "The only real mistake is the one from which we learn nothing.",
@@ -34,16 +35,20 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative flex flex-col h-screen overflow-hidden">
+    <div className="relative flex flex-col  overflow-hidden">
       <div className="absolute inset-0 z-[-1]">
         <ParticlesBackground />
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-gray-300">
-        <h1 className="text-6xl font-bold">Mistakes</h1>
-        <h2 className="mt-10 text-xl"> Coming Soon...</h2>
+        <h1 className="mt-20 text-6xl font-bold">Mistakes</h1>
+        <h2 className="mt-4 mb-10 text-2xl font-semibold">
+          A platform to share and learn from mistakes
+        </h2>
+
+        <IntakeForm />
         <p
-          className={`mt-30 text-xl transition-opacity duration-500 ${
+          className={`text-xl transition-opacity duration-500 ${
             transitioning ? "opacity-0" : "opacity-100"
           }`}
         >
