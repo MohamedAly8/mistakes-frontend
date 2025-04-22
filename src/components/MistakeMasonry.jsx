@@ -10,7 +10,7 @@ const MistakeMasonry = () => {
   useEffect(() => {
     const fetchMistakes = async () => {
       try {
-        const response = await fetch("http://54.89.193.102/mistakes");
+        const response = await fetch("https://54.89.193.102/mistakes");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -34,7 +34,7 @@ const MistakeMasonry = () => {
         </h2>
         <svg
           className="animate-spin h-10 w-10 text-gray-600"
-          xmlns="https://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
         >
