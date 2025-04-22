@@ -1,3 +1,4 @@
+import { Link } from "lucide-react";
 import { useState } from "react";
 
 const IntakeForm = () => {
@@ -28,7 +29,7 @@ const IntakeForm = () => {
     e.preventDefault();
 
     // submit to api localhost/mistakes POST
-    fetch("http://54.89.193.102/mistakes", {
+    fetch("https://54.89.193.102/mistakes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -112,12 +113,14 @@ const IntakeForm = () => {
             ))}
           </select>
         </div>
+
         <button
           type="submit"
           className="w-full px-4 py-2 text-white bg-gray-700 rounded hover:bg-gray-900 focus:outline-none focus:ring focus:ring-blue-500 cursor-pointer"
         >
           Submit
         </button>
+
         {isSubmitted && (
           <div className="text-green-500 m-auto text-center mt-4 font-bold">
             <p>Form submitted successfully!</p>
