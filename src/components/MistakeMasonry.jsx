@@ -10,7 +10,9 @@ const MistakeMasonry = () => {
   useEffect(() => {
     const fetchMistakes = async () => {
       try {
-        const response = await fetch("https://54.89.193.102/mistakes");
+        const response = await fetch(
+          "https://mistakesapi.mohamedaly.ca/mistakes"
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

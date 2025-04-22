@@ -29,7 +29,7 @@ const IntakeForm = () => {
     e.preventDefault();
 
     // submit to api localhost/mistakes POST
-    fetch("https://54.89.193.102/mistakes", {
+    fetch("https://mistakesapi.mohamedaly.ca/mistakes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
